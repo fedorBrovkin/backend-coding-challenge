@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: city-suggetion-service
+
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST:ec2-54-216-17-9.eu-west-1.compute.amazonaws.com}:${DATABASE_PORT:5432}/${DATABASE_NAME:d3nt9710m4jon6}
+    username: ${DATABASE_USER_NAME:doczrlbfjbevai}
+    password: ${DATABASE_USER_PASSWORD:d5a508fc20dafc463469b634c700b24997215e2abc0df1c858d1fc87db440251}
+
+  liquibase:
+    change-log: classpath:db/db.changelog-master.xml
+    enabled: false
+
+  jpa:
+    open-in-view: false
+    show-sql: ${SPRING_JPA_SHOW_SQL:true}
+
+suggestion:
+  limit: ${SUGGESTION_LIMIT:10}
+
+management:
+  endpoint:
+    info:
+      enabled: true
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: health, info
