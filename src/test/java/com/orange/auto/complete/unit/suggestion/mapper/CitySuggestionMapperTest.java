@@ -13,16 +13,15 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@SpringBootTest
 public class CitySuggestionMapperTest {
 
-    @Test
-    @DisplayName("")
-    @ParameterizedTest
-    void test(){
-
-
-    }
+//    @Test
+//    @DisplayName("")
+//    @ParameterizedTest
+//    void test(){
+//
+//
+//    }
 
 //    public CityDto toDto(CityEntity entity) {
 //

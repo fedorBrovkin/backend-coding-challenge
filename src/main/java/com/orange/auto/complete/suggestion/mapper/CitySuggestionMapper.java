@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
 @RequiredArgsConstructor
 public class CitySuggestionMapper {
@@ -66,7 +65,7 @@ public class CitySuggestionMapper {
             }
             default:{
 
-                return "REST WORLD";
+                return code;
             }
         }
     }

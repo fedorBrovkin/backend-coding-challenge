@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="create-cities_canada_use-table" author="fedor.brovkin" dbms="postgresql">
+    <changeSet id="create-cities_canada_usa-table" author="fedor.brovkin" dbms="postgresql">
 
         <preConditions onFail="MARK_RAN">
             <not>
@@ -41,8 +41,6 @@
             population INTEGER
             );
 
-            ALTER TABLE cities_canada_usa OWNER TO doczrlbfjbevai;
-
             CREATE UNIQUE INDEX IF NOT EXISTS cities_canada_usa_geo_names_id_uindex
             ON cities_canada_usa (geo_names_id);
 
@@ -60,27 +58,6 @@
 
             CREATE INDEX IF NOT EXISTS cities_canada_usa_name_index
             ON cities_canada_usa (name);
-
-
-            COMMENT ON COLUMN geonameid IS 'Integer id of record in geonames database';
-            COMMENT ON COLUMN name IS 'name of geographical point (utf8) varchar(200)';
-            COMMENT ON COLUMN asciiname IS 'name of geographical point in plain ascii characters, varchar(200)';
-            COMMENT ON COLUMN alternatenames IS 'alternatenames, comma separated varchar(5000)';
-            COMMENT ON COLUMN latitude IS 'latitude in decimal degrees (wgs84)';
-            COMMENT ON COLUMN longitude IS 'longitude in decimal degrees (wgs84)';
-            COMMENT ON COLUMN feature class IS 'see http://www.geonames.org/export/codes.html, char(1)';
-            COMMENT ON COLUMN feature code IS 'see http://www.geonames.org/export/codes.html, varchar(10)';
-            COMMENT ON COLUMN country code IS 'ISO-3166 2-letter country code, 2 characters';
-            COMMENT ON COLUMN cc2 IS 'alternate country codes, comma separated, ISO-3166 2-letter country code';
-            COMMENT ON COLUMN admin1 code IS 'fipscode';
-            COMMENT ON COLUMN admin2 code IS 'code for the second administrative division, a county in the US, see file admin2Codes.txt varchar(80)';
-            COMMENT ON COLUMN admin3 code IS 'code for third level administrative division, varchar(20)';
-            COMMENT ON COLUMN admin4 code IS 'code for fourth level administrative division, varchar(20)';
-            COMMENT ON COLUMN elevation IS 'in meters, integer';
-            COMMENT ON COLUMN dem IS 'digital elevation model';
-            COMMENT ON COLUMN timezone IS 'the timezone id (see file timeZone.txt) varchar(40)';
-            COMMENT ON COLUMN modification_date IS 'date of last modification in yyyy-MM-dd format';
-
         </sql>
         <rollback>
             <dropTable tableName="cities_canada_usa"/>
