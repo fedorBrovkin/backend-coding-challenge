@@ -4,6 +4,7 @@ import com.orange.auto.complete.common.constants.Api;
 import com.orange.auto.complete.suggestion.domain.model.SuggestionModel;
 import com.orange.auto.complete.suggestion.service.SuggestionService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,7 +16,10 @@ public class SuggestionResource {
 
     private final SuggestionService suggestionService;
 
-    @GetMapping(Api.Suggestion.URL)
+    @GetMapping(
+            value = Api.Suggestion.URL,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
     public ResponseEntity<SuggestionModel> getSuggestion(
             @RequestParam(Api.Suggestion.QUERY_PARAMETER_NAME)
                     String query,
