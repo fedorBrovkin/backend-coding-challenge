@@ -1,7 +1,6 @@
 package com.orange.auto.complete;
 
 import com.orange.auto.complete.suggestion.poperties.SuggestionProperties;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

@@ -8,10 +8,15 @@ ENV LANG     C.UTF-8
 ENV LC_ALL   C.UTF-8
 ENV LC_CTYPE C.UTF-8
 
-RUN mkdir -p -m 775 /logs && mkdir -p -m 775 /reports
+#ARG DEPENDENCY=target/dependency
+#COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
+#COPY ${DEPENDENCY}/META-INF /app/META-INF
+#COPY ${DEPENDENCY}/BOOT-INF/classes /app
 
+RUN mkdir -p -m 775 /logs && mkdir -p -m 775 /reports
 COPY target/city-suggestion-service-*.jar /city-suggestion-service.jar
 
-EXPOSE 8000
+EXPOSE 8080
+EXPOSE 5432
 
 ENTRYPOINT java ${JAVA_OPTS} -jar /city-suggestion-service.jar

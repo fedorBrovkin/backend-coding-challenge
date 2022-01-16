@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+  app:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    build: ./
+    ports:
+      - 8080:8080
+    networks:
+      monitoring:
+        aliases:
+          - app
+  grafana:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    build: 'scripts/config/grafana'
+    ports:
+      - 3000:3000
+    volumes:
+      - ./scripts/grafana:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      monitoring:
+        aliases:
+          - grafana
+  prometheus:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    image: prom/prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./scripts/config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./scripts/prometheus:/prometheus
+    networks:
+      monitoring:
+        aliases:
+          - prometheus
+networks:
+  monitoring:

@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.name</groupId>
     <artifactId>city-suggestion-service</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>city-suggestion-service</name>
     <description>auto-complete city suggestion service</description>
     <properties>
@@ -48,6 +48,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
 
         <dependency>
