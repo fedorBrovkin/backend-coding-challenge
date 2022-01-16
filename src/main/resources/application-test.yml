@@ -3,7 +3,9 @@ info:
     name: city-suggestion-service
     discription: Auto Complete Lagrge City Suggestion Service
     version: 1.0.0
-
+spring:
+  jpa:
+    show-sql: true
 test:
   datasource:
     postgresVersion: ${TEST_DB_POSTGRES_VERSION:postgres:11.8}

@@ -5,7 +5,9 @@ import com.orange.auto.complete.city.mapper.CityMapper;
 import com.orange.auto.complete.city.repository.CityRepository;
 import com.orange.auto.complete.city.service.CityService;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.util.Strings;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,9 +20,10 @@ public class CityServiceImpl implements CityService {
     @Override
     public List<CityDto> findAllBySequence(String sequence) {
 
-        //GET
-        //MAP
-        //RETURN
+        if (Strings.isBlank(sequence)) {
+
+            return Collections.emptyList();
+        }
 
         return cityRepository
                 .findAllByAsciiNameOrNameStartsWithOrAlternativeNameContainsInUpperCase(sequence.toUpperCase())

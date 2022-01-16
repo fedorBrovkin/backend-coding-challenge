@@ -6,7 +6,6 @@ import com.orange.auto.complete.city.service.CityService;
 import com.orange.auto.complete.city.service.impl.CityServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.time.format.DateTimeFormatter;
 

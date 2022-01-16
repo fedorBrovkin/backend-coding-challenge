@@ -3,6 +3,7 @@ package com.orange.auto.complete.city.mapper;
 import com.orange.auto.complete.city.domain.dto.CityDto;
 import com.orange.auto.complete.city.domain.entity.CityEntity;
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.util.Strings;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -41,8 +42,18 @@ public class CityMapper {
                 .elevation(entity.getElevation())
                 .dem(entity.getDem())
                 .timezone(entity.getTimezone())
-                .modificationDate(LocalDate.parse(entity.getModificationDate(), dateTimeFormatter))
+                .modificationDate(parseToLocalDate(entity.getModificationDate()))
                 .build();
+    }
+
+    private LocalDate parseToLocalDate(String stringDate){
+
+        if(Strings.isBlank(stringDate)){
+
+            return null;
+        }
+
+        return LocalDate.parse(stringDate, dateTimeFormatter);
     }
 
     private Set<String> commaSeparatedStringToSet(String string) {

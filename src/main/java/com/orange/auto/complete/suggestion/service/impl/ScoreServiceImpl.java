@@ -17,6 +17,11 @@ public class ScoreServiceImpl implements ScoreService {
     @Override
     public List<CitySuggestionDto> setScore(List<CitySuggestionDto> cities, RequestPoint requestPoint) {
 
+        if (cities == null) {
+
+            return cities;
+        }
+
         List<CitySuggestionDto> scoredCities = cities;
 
         if (requestPoint != null) {

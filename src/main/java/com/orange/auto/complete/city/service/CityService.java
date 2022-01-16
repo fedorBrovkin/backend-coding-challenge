@@ -8,5 +8,3 @@ public interface CityService {
 
     List<CityDto> findAllBySequence(String sequence);
 }
-
-//TODO ACTUATOR

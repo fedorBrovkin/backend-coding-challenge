@@ -14,20 +14,23 @@ import javax.servlet.http.HttpServletRequest;
 public class CitySuggestionServiceExceptionHandler {
 
     @ExceptionHandler(Throwable.class)
-    public ResponseEntity handleUnexpectedException(HttpServletRequest request, Throwable throwable) {
+    public ResponseEntity<Throwable> handleUnexpectedException(HttpServletRequest request, Throwable throwable) {
 
-        log.error(String.format("Unexpected Exception was thrown. Request URI: %s", request.getRequestURL()));
+        Throwable mostSpecificCause = NestedExceptionUtils.getMostSpecificCause(throwable);
+
+        log.error(
+                String.format("Unexpected Exception was thrown. Request URI: %s. Message: %s",
+                        request.getRequestURL(),
+                        mostSpecificCause)
+        );
 
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(new RuntimeException(
-                                NestedExceptionUtils.getMostSpecificCause(throwable)
-                        )
-                );
+                .body(new RuntimeException(mostSpecificCause));
     }
 
     @ExceptionHandler(NecessaryQueryParameterMissingException.class)
-    public ResponseEntity handleMissingParameterException(HttpServletRequest request, Throwable throwable){
+    public ResponseEntity<Throwable> handleMissingParameterException(HttpServletRequest request, Throwable throwable) {
 
         log.error(String.format(
                 "NecessaryQueryParameterMissingException was thrown. Request URI: %s",

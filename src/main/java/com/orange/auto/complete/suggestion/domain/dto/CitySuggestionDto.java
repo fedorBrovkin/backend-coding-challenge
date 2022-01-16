@@ -13,7 +13,7 @@ public class CitySuggestionDto {
 
     String cityName;
     String stateCode;
-    String countyCode;
+    String countryCode;
     Double latitude;
     Double longitude;
     Double score;

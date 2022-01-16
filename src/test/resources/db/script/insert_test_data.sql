@@ -52,7 +52,7 @@ INSERT INTO cities_canada_usa
 VALUES (4,
         47,
         'Callingswood',
-        'Kollingsvud,kalyngswwd, nywjrsy,Коллингсвуд,کالینگسوود، نیوجرسی',
+        'Kallingsvud,kalyngswwd, nywjrsy,Каллингсвуд,کالینگسوود، نیوجرسی',
         39.91817,-75.07128,
         'Callingswood',
         'PPL',

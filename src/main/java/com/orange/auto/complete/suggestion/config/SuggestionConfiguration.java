@@ -10,9 +10,6 @@ import com.orange.auto.complete.suggestion.service.impl.SuggestionServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-
 @Configuration
 public class SuggestionConfiguration {
 
@@ -35,6 +32,7 @@ public class SuggestionConfiguration {
             CitySuggestionMapper citySuggestionMapper,
             SuggestionProperties suggestionProperties
     ) {
+
         Integer limit = suggestionProperties.getLimit();
 
         if(limit<1){
@@ -42,6 +40,6 @@ public class SuggestionConfiguration {
             throw new IllegalArgumentException("Suggestion limit parameter value is less them 1.");
         }
 
-        return new SuggestionServiceImpl(cityService, scoreService, citySuggestionMapper, limit);
+        return new SuggestionServiceImpl(cityService, scoreService, citySuggestionMapper, suggestionProperties);
     }
 }

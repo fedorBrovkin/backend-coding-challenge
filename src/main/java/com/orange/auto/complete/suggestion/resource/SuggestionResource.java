@@ -1,5 +1,6 @@
 package com.orange.auto.complete.suggestion.resource;
 
+import com.orange.auto.complete.common.constants.Api;
 import com.orange.auto.complete.suggestion.domain.model.SuggestionModel;
 import com.orange.auto.complete.suggestion.service.SuggestionService;
 import lombok.RequiredArgsConstructor;
@@ -14,11 +15,14 @@ public class SuggestionResource {
 
     private final SuggestionService suggestionService;
 
-    @GetMapping("/suggestions")
+    @GetMapping(Api.Suggestion.URL)
     public ResponseEntity<SuggestionModel> getSuggestion(
-            @RequestParam("q") String query,
-            @RequestParam(value = "latitude", required = false) String latitude,
-            @RequestParam(value = "longitude", required = false) String longitude
+            @RequestParam(Api.Suggestion.QUERY_PARAMETER_NAME)
+                    String query,
+            @RequestParam(value = Api.Suggestion.LATITUDE_PARAMETER_NAME, required = false)
+                    String latitude,
+            @RequestParam(value = Api.Suggestion.LONGITUDE_PARAMETER_NAME, required = false)
+                    String longitude
     ) {
 
         return ResponseEntity.ok().body(suggestionService.getSuggestions(query, latitude, longitude));
