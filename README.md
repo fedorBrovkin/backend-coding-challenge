@@ -19,8 +19,7 @@ It is also checks the alternative names of the cities like ‘NYC’ for New Yor
 The database is a part of US/Canada cities dump by GeoNames. 
 This is just a PoC, so the list is not full.
 
-#API
-2.API
+##API
 
 The service is available by the link below.
 (This is basic app-url and dosnt provide any raw endpoints. 
@@ -29,12 +28,12 @@ You can find exemples in the "example of request URL" below)
 
 https://city-suggestions.herokuapp.com/
 
-###The base service url 
+##The base service url 
 | base url|
 |  :--------: | 
 | api/v1/cities| 
 
-###The endpoint
+##The endpoint
 
 | Headers       | Body        | Method |path|Description|
 | :-------------: |:-------------:| :-----:| :-------------: |:-------------:|
@@ -46,7 +45,7 @@ https://city-suggestions.herokuapp.com/
 | -     | - |GET|/suggestion|endpoint|
 
 
-#Necessary and unnecessary URL parameters
+##Necessary and unnecessary URL parameters
 
 | Param Name    | necessary       | example|target type|Description|
 | :-------------: |:-------------:| :-----:| :-------------: |:-------------|
@@ -54,7 +53,7 @@ https://city-suggestions.herokuapp.com/
 latitude |-|?laltitude=34.5456|double|The latitude of the point user looking at. It can be use as a user location to specify the closest targets
 longitude|-|?longitude=-45|double|The longitude. Same as previous.|
 
-###The example of the request URL:
+##The example of the request URL:
 ​​https://city-suggestions.herokuapp.com/api/v1/cities/suggestions?latitude=32.05&q=jo&longitude=-34.56
 
 
@@ -120,11 +119,16 @@ These responses are meant to provide guidance. The exact values can vary based o
 }
 ```
 
-###Additional api 
+##Additional api 
 The service provided actuator info endpoint.
 Use the links:
 https://city-suggestions.herokuapp.com/actuator/info
 
+##Swagger
+Service provides Swagger(OpenAPI 3.0) UI.
+```json
+{HOST}/swagger-ui/index.html
+```
 
 ## References
 
